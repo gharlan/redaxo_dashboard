@@ -1,7 +1,7 @@
 <?php
 
 /**
- * REDAXO Version Checker Addon
+ * RSS Reader Addon
  *
  * @author markus[dot]staab[at]redaxo[dot]de Markus Staab
  * @author <a href="http://www.redaxo.org">www.redaxo.org</a>
@@ -9,13 +9,16 @@
  * @package redaxo5
  */
 
-$mypage = 'version_checker';
+$mypage = 'rss_reader';
 
 // im backend und eingeloggt?
 if (rex::isBackend() && rex::getUser()) {
   if (rex_request('page', 'string') == 'be_dashboard') {
-    require_once dirname(__FILE__) . '/functions/function_version_check.inc.php';
+    require_once dirname(__FILE__) . '/functions/function_reader.php';
 
-    rex_extension::register('DASHBOARD_NOTIFICATION', array(new rex_version_checker_notification(), 'registerAsExtension'));
+    rex_extension::register(
+      'DASHBOARD_COMPONENT',
+      array(new rex_rss_reader_component(), 'registerAsExtension')
+    );
   }
 }

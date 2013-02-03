@@ -18,7 +18,7 @@ if (rex::isBackend() && rex::getUser()) {
       define('REX_DASHBOARD_USERINFO_DEFAULT_LIMIT', 7);
     }
 
-    require_once dirname(__FILE__) . '/functions/function_userinfo.inc.php';
+    require_once dirname(__FILE__) . '/functions/function_userinfo.php';
 
     $components = array(
       'rex_articles_component',
